@@ -17,7 +17,8 @@ def index():
     
     if request.method == 'POST':
         if request.form.get('Process'):
-            subprocess.call("./demo_cli.py", shell=True)
+            #subprocess.call("./demo_cli.py", shell=True)
+            return render_template("show.html")
 
         elif request.form.get('to_say'):
             #on recupere ce qui a été mis dans le formulaire et on enregistre le tout dans un fichier txt
@@ -44,9 +45,9 @@ def read_me():
     return render_template("read_me.html")
 
 
-@app.route("/loading")
-def loading():
-    return render_template("loading.html")
+@app.route("/temp")
+def temp():
+    return render_template("temp.html")
 
 if __name__ == "__main__":
     app.run(debug=True)

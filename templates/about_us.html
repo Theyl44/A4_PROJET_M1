@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ProjetM1</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <link rel="stylesheet" href="{{url_for('static', filename='styles/about_us.css')}}">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{{url_for('index')}}">Projet M1</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('read_me')}}">ReadMe</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href=" {{url_for('about_page')}}">About Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <h1>ABOUT US PAGE</h1>
+
+    <div class="row">
+        <div class="col-md-6">
+
+            <img style="max-width: 50%;" src="{{url_for('static', filename='img/perso_icon.png')}}" class="rounded-circle">
+            <h4>Théo LOPEZ </h4>
+            <h5>M1 Nantes</h5>
+            <a href="mailto:theo.lopez@isen-ouest.yncrea.fr" target="_blank" class="btn btn-primary">theo.lopez@isen-ouest.yncrea.fr</a>
+        </div>
+
+        <div class="col-md-6">
+            <img style="max-width: 50%;" src="{{url_for('static', filename='img/perso_icon.png')}}" class="rounded-circle">
+            <h4>Yohann Charrier</h4>
+            <h5>M1 Nantes</h5>
+            <a href="mailto:yohann.charrier@isen-ouest.yncrea.fr" target="_blank" class="btn btn-primary">yohann.charrier@isen-ouest.yncrea.fr</a>
+        </div>
+    </div>
+</body>
+
+</html>

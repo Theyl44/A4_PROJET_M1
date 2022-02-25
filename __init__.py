@@ -17,7 +17,7 @@ def index():
     
     if request.method == 'POST':
         if request.form.get('Process'):
-            #subprocess.call("./demo_cli.py", shell=True)
+            subprocess.call("./demo_cli.py", shell=True)
             return render_template("show.html")
 
         elif request.form.get('to_say'):

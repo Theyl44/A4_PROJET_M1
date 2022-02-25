@@ -1,6 +1,7 @@
 html {
     /* Base styles go here */
     font: 14px/1.5 Arial, sans-serif;
+    margin: 1em;
 }
 
 body {
@@ -11,4 +12,14 @@ body {
 
 nav {
     width: 920px;
+}
+
+#to_say {
+    width: 800px;
+}
+
+#analyser {
+    width: 100%;
+    height: 200px;
+    background-color: gray
 }

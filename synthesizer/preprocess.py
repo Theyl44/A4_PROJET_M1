@@ -53,13 +53,14 @@ def preprocess_dataset(datasets_root: Path, out_dir: Path, n_processes: int, ski
 def preprocess_speaker(speaker_dir, out_dir: Path, skip_existing: bool, hparams, no_alignments: bool):
     metadata = []
     for book_dir in speaker_dir.glob("*"):
+        
         if no_alignments:
             # Gather the utterance audios and texts
             # LibriTTS uses .wav but we will include extensions for compatibility with other datasets
             extensions = ["*.wav", "*.flac", "*.mp3"]
             for extension in extensions:
                 wav_fpaths = book_dir.glob(extension)
-
+   
                 for wav_fpath in wav_fpaths:
                     # Load the audio waveform
                     wav, _ = librosa.load(str(wav_fpath), hparams.sample_rate)
@@ -71,6 +72,7 @@ def preprocess_speaker(speaker_dir, out_dir: Path, skip_existing: bool, hparams,
                     text_fpath = wav_fpath.with_suffix(".txt")
                     if not text_fpath.exists():
                         # Check for .normalized.txt (LibriTTS)
+                        print(text_fpath)
                         text_fpath = wav_fpath.with_suffix(".normalized.txt")
                         assert text_fpath.exists()
                     with text_fpath.open("r") as text_file:

@@ -9,8 +9,9 @@ class RandomCycler:
         - Between two appearances of the same item, there may be at most 2 * (n - 1) other items.
     """
     
-    def __init__(self, source):
+    def __init__(self, source, source_file="null"):
         if len(source) == 0:
+            print(source_file)
             raise Exception("Can't create RandomCycler from an empty collection")
         self.all_items = list(source)
         self.next_items = []

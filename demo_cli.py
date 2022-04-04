@@ -63,7 +63,7 @@ if __name__ == '__main__':
 
     ## Load the models one by one.
     print("Preparing the encoder, the synthesizer and the vocoder...")
-    ensure_default_models(Path("saved_models"))
+    #ensure_default_models(Path("saved_models"))
     encoder.load_model(args.enc_model_fpath)
     synthesizer = Synthesizer(args.syn_model_fpath)
     vocoder.load_model(args.voc_model_fpath)
@@ -78,8 +78,8 @@ if __name__ == '__main__':
     # The sampling rate is the number of values (samples) recorded per second, it is set to
     # 16000 for the encoder. Creating an array of length <sampling_rate> will always correspond
     # to an audio of 1 second.
-    #print("\tTesting the encoder...")
-    #encoder.embed_utterance(np.zeros(encoder.sampling_rate))
+    print("\tTesting the encoder...")
+    encoder.embed_utterance(np.zeros(encoder.sampling_rate))
 
     # Create a dummy embedding. You would normally use the embedding that encoder.embed_utterance
     # returns, but here we're going to make one ourselves just for the sake of showing that it's

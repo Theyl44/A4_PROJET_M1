@@ -1,3 +1,4 @@
+from time import sleep
 from torch.utils.data import Dataset
 from pathlib import Path
 from vocoder import audio
@@ -23,10 +24,9 @@ class VocoderDataset(Dataset):
     
     def __getitem__(self, index):  
         mel_path, wav_path = self.samples_fpaths[index]
-        
         # Load the mel spectrogram and adjust its range to [-1, 1]
         mel = np.load(mel_path).T.astype(np.float32) / hp.mel_max_abs_value
-        
+
         # Load the wav
         wav = np.load(wav_path)
         if hp.apply_preemphasis:
@@ -36,6 +36,9 @@ class VocoderDataset(Dataset):
         # Fix for missing padding   # TODO: settle on whether this is any useful
         r_pad =  (len(wav) // hp.hop_length + 1) * hp.hop_length - len(wav)
         wav = np.pad(wav, (0, r_pad), mode='constant')
+        if len(wav) < mel.shape[1] * hp.hop_length:
+            r_pad = (mel.shape[1] * hp.hop_length) - len(wav)
+            wav = np.pad(wav, (0, r_pad), mode='constant')
         assert len(wav) >= mel.shape[1] * hp.hop_length
         wav = wav[:mel.shape[1] * hp.hop_length]
         assert len(wav) % hp.hop_length == 0

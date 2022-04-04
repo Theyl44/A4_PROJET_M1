@@ -24,9 +24,6 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{url_for('read_me')}}">ReadMe</a>
                 </li>
@@ -55,19 +52,23 @@
 
 
         </div>
+
         <div class="offset-md-1 md-col-5">
             <h3 style="text-align: center;">Upload a voice</h3>
-            <div style="height: 200px;">
-
+            <div>
+                <br>
+                <form method="post" action="/upload" enctype="multipart/form-data">
+                    <input type="file" name="file" accept="audio/mp3, audio/wav">
+                    <input type="submit" value="Envoyer" />
+                </form>
             </div>
-            <button style="text-align: center;" class="btn btn-default" disabled>Upload</button>
         </div>
     </div>
     <br>
 
     <h2>Que va dire cette voix ? </h2>
     <div class="row ">
-        <form action="/" method="post">
+        <form action="/to_say" method="post">
             <input id="to_say" type="text " name="to_say" placeholder="Ecrivez ce que vous voulez faire dire a la voix" />
             <input type="submit" value="Envoyer" />
         </form>
@@ -75,12 +76,11 @@
     <br>
 
     <div class="row ">
-        <form method="post" action="/">
-            <input style=" width: 875px; " id="process" type="submit" class="btn btn-danger" value="Envoyer au Système" name="Process" />
+        <form method="post" action="/process">
+            <input style=" width: 875px; " id="process" type="submit" class="btn btn-danger" value="Envoyer au Système" name="process" />
         </form>
 
     </div>
-
 
 
     <script src="{{ url_for( 'static', filename='recorder.js' ) }} "></script>
